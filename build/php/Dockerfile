@@ -20,3 +20,13 @@ RUN apt-get update && apt-get install -y \
 
 # Copy php settings
 COPY ./php.ini ${PHP_INI_DIR}/conf.d/99-php.ini
+
+# Habilitar mod_rewrite para Laravel
+RUN a2enmod rewrite && service apache2 restart
+
+#Instalar Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+#Instalar Node JS
+RUN curl - fsSL https://deb.nodesource.com/setup_22.x | bash -
+RUN apt-get install -y nodejs

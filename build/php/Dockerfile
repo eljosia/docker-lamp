@@ -28,5 +28,5 @@ RUN a2enmod rewrite && service apache2 restart
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 #Instalar Node JS
-RUN curl - fsSL https://deb.nodesource.com/setup_22.x | bash -
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
 RUN apt-get install -y nodejs
